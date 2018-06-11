@@ -10,7 +10,7 @@ RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip
-RUN apt-get install -y docker python python-dev python-pip
+RUN apt-get install -y python python-dev python-pip
 
 # Java
 # This image based on a openjdk image.  Java already installed.
@@ -26,14 +26,17 @@ RUN \
   sbt sbtVersion
 
 # Go
-RUN wget https://dl.google.com/go/go1.10.2.linux-amd64.tar.gz
-RUN tar -xvf go1.10.1.linux-amd64.tar.gz -C /usr/local
+RUN wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
+RUN tar -xvf go1.10.3.linux-amd64.tar.gz -C /usr/local
 
 # AWS CLI
 RUN pip install awscli --upgrade
 
 # Docker
-RUN apt-get install -y docker
+RUN apt-get install -y apt-transport-https ca-certificates software-properties-common
+RUN sh -c "curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -"
+RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+RUN apt-get update && apt-get install -y docker-ce
 
 USER jenkins
 
