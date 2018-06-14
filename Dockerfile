@@ -22,7 +22,7 @@ RUN \
   dpkg -i sbt-$SBT_VERSION.deb && \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
-  apt-get install sbt && \
+  apt-get install -y sbt && \
   sbt sbtVersion
 
 # Go
@@ -38,10 +38,21 @@ RUN sh -c "curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 RUN apt-get update && apt-get install -y docker-ce 
 
+# MySQL Client
+ENV MYSQL_VERSION=0.8.10-1
+RUN \
+  curl -L -o mysql-apt-config_${MYSQL_VERSION}_all.deb https://dev.mysql.com/get/mysql-apt-config_${MYSQL_VERSION}_all.deb && \
+  dpkg -i mysql-apt-config_${MYSQL_VERSION}_all.deb && \
+  rm mysql-apt-config_${MYSQL_VERSION}_all.deb && \
+  apt-get update && \
+  apt-get install -y mysql-client
+  
 # Other Utils
 RUN apt-get install -y zip jq
 
 USER jenkins
+
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Duser.timezone=America/New_York"
 
 RUN install-plugins.sh antisamy-markup-formatter matrix-auth blueocean:$BLUEOCEAN_VERSION
 
