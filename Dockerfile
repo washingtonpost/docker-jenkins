@@ -39,7 +39,7 @@ RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debia
 RUN apt-get update && apt-get install -y docker-ce 
 
 # Other Utils
-RUN apt-get install -y zip
+RUN apt-get install -y zip jq
 
 USER jenkins
 
