@@ -48,7 +48,7 @@ RUN \
   apt-get install -y mysql-client
   
 # Other Utils
-RUN apt-get install -y zip jq
+RUN apt-get install -y zip jq gettext
 
 USER jenkins
 
