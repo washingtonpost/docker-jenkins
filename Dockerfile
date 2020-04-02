@@ -6,7 +6,7 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Node/Npm
-RUN bash -c "curl -sL https://deb.nodesource.com/setup_8.x | bash -"
+RUN bash -c "curl -sL https://deb.nodesource.com/setup_13.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip
