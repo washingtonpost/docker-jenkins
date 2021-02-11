@@ -46,8 +46,10 @@ RUN \
 # MySQL Client
 ENV MYSQL_VERSION=0.8.16-1
 RUN \
-  curl -L -o mysql-apt-config_${MYSQL_VERSION}_all.deb https://dev.mysql.com/get/mysql-apt-config_${MYSQL_VERSION}_all.deb && \
-  dpkg -i mysql-apt-config_${MYSQL_VERSION}_all.deb && \
+  curl -L -o mysql-apt-config_${MYSQL_VERSION}_all.deb https://dev.mysql.com/get/mysql-apt-config_${MYSQL_VERSION}_all.deb
+RUN \
+  echo 4 | dpkg -i mysql-apt-config_${MYSQL_VERSION}_all.deb
+RUN \
   rm mysql-apt-config_${MYSQL_VERSION}_all.deb && \
   apt-get update && \
   apt-get install -y mysql-client
