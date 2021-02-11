@@ -16,7 +16,7 @@ RUN apt-get install -y python python-dev python-pip
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
-ENV SBT_VERSION=1.1.6
+ENV SBT_VERSION=1.4.7
 RUN \
   curl -L -o sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
   dpkg -i sbt-$SBT_VERSION.deb && \
@@ -26,8 +26,8 @@ RUN \
   sbt sbtVersion
 
 # Go
-RUN wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
-RUN tar -xvf go1.10.3.linux-amd64.tar.gz -C /usr/local
+RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+RUN tar -xvf go1.15.1.linux-amd64.tar.gz -C /usr/local
 
 # AWS CLI
 RUN pip install awscli --upgrade
@@ -44,7 +44,7 @@ RUN \
   chmod +x /usr/local/bin/docker-compose
 
 # MySQL Client
-ENV MYSQL_VERSION=0.8.10-1
+ENV MYSQL_VERSION=0.8.16-1
 RUN \
   curl -L -o mysql-apt-config_${MYSQL_VERSION}_all.deb https://dev.mysql.com/get/mysql-apt-config_${MYSQL_VERSION}_all.deb && \
   dpkg -i mysql-apt-config_${MYSQL_VERSION}_all.deb && \
