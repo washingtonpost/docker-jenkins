@@ -16,7 +16,7 @@ RUN apt-get install -y python python-dev python-pip
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
-ENV SBT_VERSION=1.4.7
+ENV SBT_VERSION=1.1.6
 RUN \
   curl -L -o sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
   dpkg -i sbt-$SBT_VERSION.deb && \
