@@ -53,6 +53,9 @@ RUN \
   rm mysql-apt-config_${MYSQL_VERSION}_all.deb && \
   apt-get update && \
   apt-get install -y mysql-client
+
+# Emulator Support
+RUN apt-get install -y binfmt-support && update-binfmts --enable
   
 # Other Utils
 RUN apt-get install -y zip jq gettext
