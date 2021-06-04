@@ -22,5 +22,5 @@ jobs:
           USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           PASSWORD: ${{ secrets.DOCKERHUB_ACCESS_KEY }}
           IMAGE_NAME: "washpost/docker-jenkins"
-          TAG_NAME: "v1.16"
+          TAG_NAME: "v1.17"
           LATEST: "true"
