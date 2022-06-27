@@ -16,9 +16,10 @@ RUN apt-get install -y python3 python3-dev python3-pip
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
-ENV SBT_VERSION=1.1.6
+# SBT versions here: https://scala.jfrog.io/ui/native/debian/
+ENV SBT_VERSION=1.6.2
 RUN \
-  curl -L -o sbt-$SBT_VERSION.deb http://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
+  curl -L -o sbt-$SBT_VERSION.deb https://scala.jfrog.io/ui/native/debian/sbt-$SBT_VERSION.deb && \
   dpkg -i sbt-$SBT_VERSION.deb && \
   rm sbt-$SBT_VERSION.deb && \
   apt-get update && \
