@@ -48,5 +48,5 @@ USER jenkins
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Duser.timezone=America/New_York"
 
-RUN java -jar jenkins-plugin-manager.jar --plugins antisamy-markup-formatter matrix-auth blueocean --verbose
+RUN java -jar opt/jenkins-plugin-manager.jar --plugins antisamy-markup-formatter matrix-auth blueocean --verbose
 
