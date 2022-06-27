@@ -21,7 +21,7 @@ COPY install-sbt.sh /tmp/install-sbt.sh
 ENV SBT_VERSION=1.6.2
 RUN \
   sh /tmp/install-sbt.sh "${SBT_VERSION}" && \
-  sbt sbtVersion \
+  sbt sbtVersion -Dsbt.rootdir=true \
   rm /tmp/install-sbt.sh
 
 # Go
