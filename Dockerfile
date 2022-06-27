@@ -10,7 +10,7 @@ RUN bash -c "curl -sL https://deb.nodesource.com/setup_14.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip
-RUN apt-get install -y python python-dev python-pip
+RUN apt-get install -y python3 python3-dev python3-pip
 
 # Java
 # This image based on a openjdk image.  Java already installed.
