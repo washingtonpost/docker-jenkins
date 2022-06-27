@@ -25,7 +25,7 @@ RUN \
   rm /tmp/install-sbt.sh
 
 # Go
-RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+RUN curl https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz --output go1.15.1.linux-amd64.tar.gz
 RUN tar -xvf go1.15.1.linux-amd64.tar.gz -C /usr/local
 
 # AWS CLI
