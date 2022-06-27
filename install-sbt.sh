@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 SBT_VERSION="$1"
 EXPECTED_MD5="c0d5823e24955433334f7d1953e08c5c"
 
