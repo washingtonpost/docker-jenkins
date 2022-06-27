@@ -17,14 +17,12 @@ RUN apt-get install -y python3 python3-dev python3-pip
 
 # Scala/sbt
 # SBT versions here: https://scala.jfrog.io/ui/native/debian/
+COPY ./install-sbt.sh /tmp/install-sbt.sh
 ENV SBT_VERSION=1.6.2
 RUN \
-  curl -L -o sbt-$SBT_VERSION.deb https://scala.jfrog.io/ui/native/debian/sbt-$SBT_VERSION.deb && \
-  dpkg -i sbt-$SBT_VERSION.deb && \
-  rm sbt-$SBT_VERSION.deb && \
-  apt-get update && \
-  apt-get install -y sbt && \
-  sbt sbtVersion
+  sh ./install-sbt.sh && \
+  sbt sbtVersion \
+  rm /tmp/install-sbt.sh
 
 # Go
 RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
