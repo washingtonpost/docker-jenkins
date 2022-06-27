@@ -9,8 +9,8 @@ USER root
 RUN bash -c "curl -sL https://deb.nodesource.com/setup_14.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
-# Python/pip
-RUN apt-get install -y python3 python3-dev python3-pip
+# Python/pip, and wget
+RUN apt-get install -y python3 python3-dev python3-pip wget
 
 # Java
 # This image based on a openjdk image.  Java already installed.
@@ -25,7 +25,7 @@ RUN \
   rm /tmp/install-sbt.sh
 
 # Go
-RUN curl https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz --output go1.15.1.linux-amd64.tar.gz
+RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
 RUN tar -xvf go1.15.1.linux-amd64.tar.gz -C /usr/local
 
 # AWS CLI
