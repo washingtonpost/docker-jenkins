@@ -10,7 +10,7 @@ RECEIVED_MD5="$(md5sum "sbt-${SBT_VERSION}.deb" | cut -f1 -d' ')"
 echo "Expected MD5: ${EXPECTED_MD5}"
 echo "Received MD5: ${RECEIVED_MD5}"
 
-if [[ "$EXPECTED_MD5" = "$RECEIVED_MD5" ]]; then
+if [ "$EXPECTED_MD5" = "$RECEIVED_MD5" ]; then
   dpkg -i "sbt-${SBT_VERSION}.deb"
 else
   echo "MD5 MISMATCH!"
