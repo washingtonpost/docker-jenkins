@@ -17,7 +17,7 @@ RUN apt-get install -y python3 python3-dev python3-pip
 
 # Scala/sbt
 # SBT versions here: https://scala.jfrog.io/ui/native/debian/
-COPY ./install-sbt.sh /tmp/install-sbt.sh
+COPY install-sbt.sh /tmp/install-sbt.sh
 ENV SBT_VERSION=1.6.2
 RUN \
   sh ./install-sbt.sh && \
