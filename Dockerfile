@@ -16,7 +16,6 @@ RUN apt-get install -y python3 python3-dev python3-pip wget
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
-# SBT versions here: https://scala.jfrog.io/ui/native/debian/
 COPY install-sbt.sh /tmp/install-sbt.sh
 ENV SBT_VERSION=1.6.2
 RUN \
@@ -39,20 +38,9 @@ RUN apt-get update && apt-get install -y docker-ce
 
 # Docker Compose
 RUN \
-  curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
+  curl -L "https://github.com/docker/compose/releases/download/2.3.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && \
   chmod +x /usr/local/bin/docker-compose
 
-# MySQL Client
-ENV MYSQL_VERSION=0.8.16-1
-RUN \
-  curl -L -o mysql-apt-config_${MYSQL_VERSION}_all.deb https://dev.mysql.com/get/mysql-apt-config_${MYSQL_VERSION}_all.deb
-RUN \
-  echo 4 | dpkg -i mysql-apt-config_${MYSQL_VERSION}_all.deb
-RUN \
-  rm mysql-apt-config_${MYSQL_VERSION}_all.deb && \
-  apt-get update && \
-  apt-get install -y mysql-client
-  
 # Other Utils
 RUN apt-get install -y zip jq gettext
 
