@@ -20,7 +20,7 @@ RUN apt-get install -y python3 python3-dev python3-pip
 COPY install-sbt.sh /tmp/install-sbt.sh
 ENV SBT_VERSION=1.6.2
 RUN \
-  sh ./install-sbt.sh && \
+  sh /tmp/install-sbt.sh && \
   sbt sbtVersion \
   rm /tmp/install-sbt.sh
 
