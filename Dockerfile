@@ -6,26 +6,26 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Node/Npm
-RUN bash -c "curl -sL https://deb.nodesource.com/setup_14.x | bash -"
+RUN bash -c "curl -sL https://deb.nodesource.com/setup_20.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip, and wget
-RUN apt-get install -y python3 python3-dev python3-pip wget
+RUN apt-get install -y python3.11 python3.11-dev python3.11-pip wget
 
 # Java
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
 COPY install-sbt.sh /tmp/install-sbt.sh
-ENV SBT_VERSION=1.6.2
+ENV SBT_VERSION=1.9.0
 RUN \
   sh /tmp/install-sbt.sh "${SBT_VERSION}" && \
   sbt sbtVersion -Dsbt.rootdir=true && \
   rm /tmp/install-sbt.sh
 
 # Go
-RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
-RUN tar -xvf go1.15.1.linux-amd64.tar.gz -C /usr/local
+RUN wget https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz
+RUN tar -xvf go1.20.5.linux-amd64.tar.gz -C /usr/local
 
 # AWS CLI
 RUN pip install awscli --upgrade
