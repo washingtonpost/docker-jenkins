@@ -30,6 +30,10 @@ RUN \
 RUN wget https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz
 RUN tar -xvf go1.20.5.linux-amd64.tar.gz -C /usr/local
 
+# Firebase
+# https://firebase.google.com/docs/cli#install-cli-mac-linux
+RUN npm install -g firebase-tools
+
 # AWS CLI
 RUN pip install awscli --upgrade
 
