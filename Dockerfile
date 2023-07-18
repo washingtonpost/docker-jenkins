@@ -6,7 +6,8 @@ FROM jenkins/jenkins:lts
 USER root
 
 # Node/Npm
-RUN bash -c "curl -sL https://deb.nodesource.com/setup_14.x | bash -"
+# https://github.com/nodesource/distributions
+RUN bash -c "curl -sL https://deb.nodesource.com/setup_20.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip, and wget
@@ -16,16 +17,22 @@ RUN apt-get install -y python3 python3-dev python3-pip wget
 # This image based on a openjdk image.  Java already installed.
 
 # Scala/sbt
+# https://www.scala-sbt.org/
 COPY install-sbt.sh /tmp/install-sbt.sh
-ENV SBT_VERSION=1.6.2
+ENV SBT_VERSION=1.9.0
 RUN \
   sh /tmp/install-sbt.sh "${SBT_VERSION}" && \
   sbt sbtVersion -Dsbt.rootdir=true && \
   rm /tmp/install-sbt.sh
 
 # Go
-RUN wget https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
-RUN tar -xvf go1.15.1.linux-amd64.tar.gz -C /usr/local
+# https://go.dev/dl/
+RUN wget https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz
+RUN tar -xvf go1.20.5.linux-amd64.tar.gz -C /usr/local
+
+# Firebase
+# https://firebase.google.com/docs/cli#install-cli-mac-linux
+RUN npm install -g firebase-tools
 
 # AWS CLI
 RUN pip install awscli --upgrade
@@ -34,7 +41,7 @@ RUN pip install awscli --upgrade
 RUN apt-get install -y apt-transport-https ca-certificates software-properties-common
 RUN sh -c "curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -"
 RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-RUN apt-get update && apt-get install -y docker-ce 
+RUN apt-get update && apt-get install -y docker-ce
 
 # Docker Compose
 RUN \

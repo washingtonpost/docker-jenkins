@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SBT_VERSION="$1"
-EXPECTED_MD5="c0d5823e24955433334f7d1953e08c5c"
+EXPECTED_MD5="957ee58e0eb9a3840f1a91743fbbeab5"
 
 curl -vvv "https://scala.jfrog.io/artifactory/debian/sbt-${SBT_VERSION}.deb" --output "sbt-${SBT_VERSION}.deb"
 
