@@ -7,7 +7,7 @@ USER root
 
 # Node/Npm
 # https://github.com/nodesource/distributions
-RUN bash -c "curl -sL https://deb.nodesource.com/setup_20.x | bash -"
+RUN bash -c "curl -sL https://deb.nodesource.com/setup_22.x | bash -"
 RUN apt-get update && apt-get install -y nodejs
 
 # Python/pip, and wget
@@ -19,7 +19,7 @@ RUN apt-get install -y python3 python3-dev python3-pip wget
 # Scala/sbt
 # https://www.scala-sbt.org/
 COPY install-sbt.sh /tmp/install-sbt.sh
-ENV SBT_VERSION=1.9.0
+ENV SBT_VERSION=1.10.1
 RUN \
   sh /tmp/install-sbt.sh "${SBT_VERSION}" && \
   sbt sbtVersion -Dsbt.rootdir=true && \
@@ -27,8 +27,8 @@ RUN \
 
 # Go
 # https://go.dev/dl/
-RUN wget https://dl.google.com/go/go1.20.5.linux-amd64.tar.gz
-RUN tar -xvf go1.20.5.linux-amd64.tar.gz -C /usr/local
+RUN wget https://dl.google.com/go/go1.23.0.linux-amd64.tar.gz
+RUN tar -xvf go1.23.0.linux-amd64.tar.gz -C /usr/local
 
 # Firebase
 # https://firebase.google.com/docs/cli#install-cli-mac-linux
