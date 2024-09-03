@@ -35,7 +35,7 @@ RUN tar -xvf go1.23.0.linux-amd64.tar.gz -C /usr/local
 RUN npm install -g firebase-tools
 
 # AWS CLI
-RUN pip install awscli --upgrade
+RUN pip install awscli --upgrade --break-system-packages
 
 # Docker
 RUN apt-get install -y apt-transport-https ca-certificates software-properties-common
