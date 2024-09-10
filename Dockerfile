@@ -1,5 +1,5 @@
 # This image is based off the latest Jenkins LTS
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:latest-jdk11
 
 # Install common build tools
 
