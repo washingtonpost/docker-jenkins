@@ -15,6 +15,7 @@ RUN apt-get install -y python3 python3-dev python3-pip wget
 
 # Java
 # This image based on a openjdk image.  Java already installed.
+RUN apt-get install -y openjdk-21-jdk
 
 # Scala/sbt
 # https://www.scala-sbt.org/
