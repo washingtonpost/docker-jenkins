@@ -1,5 +1,5 @@
 # This image is based off the latest Jenkins LTS
-FROM jenkins/jenkins:latest-jdk11
+FROM jenkins/jenkins:latest
 
 # Install common build tools
 
@@ -27,8 +27,8 @@ RUN \
 
 # Go
 # https://go.dev/dl/
-RUN wget https://dl.google.com/go/go1.23.0.linux-amd64.tar.gz
-RUN tar -xvf go1.23.0.linux-amd64.tar.gz -C /usr/local
+RUN wget https://dl.google.com/go/go1.24.5.linux-amd64.tar.gz
+RUN tar -xvf go1.24.5.linux-amd64.tar.gz -C /usr/local
 
 # Firebase
 # https://firebase.google.com/docs/cli#install-cli-mac-linux
