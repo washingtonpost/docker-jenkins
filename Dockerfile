@@ -75,17 +75,18 @@ RUN \
 # https://developer.android.com/studio
 
 # Set environment variables
-ENV ANDROID_SDK_ROOT=/opt/android-sdk
-ENV PATH="${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools"
+ENV ANDROID_HOME=/opt/android-sdk
+ENV ANDROID_SDK_ROOT="${ANDROID_HOME}"
+ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
 
 # Download and unpack Android Command Line Tools
 # Note: Check the Android Studio downloads page for the latest URL
 ARG CMDLINE_TOOLS_URL="https://dl.google.com/android/repository/commandlinetools-linux-14742923_latest.zip"
 
-RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
+RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
     curl -fsSL ${CMDLINE_TOOLS_URL} -o /tmp/cmdline-tools.zip && \
-    unzip /tmp/cmdline-tools.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
-    mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+    unzip /tmp/cmdline-tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
     rm /tmp/cmdline-tools.zip
 
 # 4. Accept licenses (Crucial for CI/CD pipelines)
