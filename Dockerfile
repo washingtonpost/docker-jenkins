@@ -39,11 +39,12 @@ RUN pip install awscli --upgrade --break-system-packages
 
 # Docker Tools
 
-# Other Utils
-RUN apt-get install -y zip jq gettext
-
 # Install minimal tools for fetching keys and HTTPS transport
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
+    zip \
+    unzip \
+    jq \
+    gettext \
     ca-certificates \
     curl \
     gnupg \
